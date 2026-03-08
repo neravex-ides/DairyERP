@@ -7,7 +7,6 @@
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -27,26 +26,22 @@
             </div>
             <div>
                 <div class="auth-brand">DairyERP</div>
-                <div style="font-size:11px;color:#6b7280;">Daily milk & feed ERP</div>
+                <div style="font-size:11px;color:#6b7280;">Daily dairy ERP</div>
             </div>
         </header>
 
         <main class="auth-hero-body">
-            <div class="auth-hero-highlight">
-                <span><i class="fa-solid fa-users"></i> Farmer & Customer wise tracking</span>
-            </div>
             <h1 class="auth-hero-title">
                 Login to manage milk, feed & payments.
             </h1>
             <p class="auth-hero-text">
-                All your dairy data is stored securely with role based access – admin, cashier,
-                collection center, etc.
+                Secure login with Email or Google. Data synced via Firebase.
             </p>
         </main>
 
         <footer class="auth-hero-footer">
-            <span>✔ Farmer wise daily milk entries</span>
-            <span>✔ Khal & churi stock & issue register</span>
+            <span>✔ Farmer milk entries</span>
+            <span>✔ Payments & reports</span>
         </footer>
     </aside>
 
@@ -55,7 +50,7 @@
             <header class="auth-panel-header">
                 <div>
                     <h2 class="auth-title">Sign in</h2>
-                    <p class="auth-subtitle">Use your registered email & password or Google.</p>
+                    <p class="auth-subtitle">Email & password or Google.</p>
                 </div>
                 <div class="auth-badge">Firebase Auth</div>
             </header>
@@ -75,7 +70,7 @@
                         <label for="login-email">Email</label>
                     </div>
                     <div class="input-control">
-                        <input type="email" id="login-email" placeholder="you@dairyfarm.com" required>
+                        <input type="email" id="login-email" required>
                     </div>
                 </div>
                 <div class="field">
@@ -84,15 +79,8 @@
                         <span id="login-forgot-link" style="cursor:pointer;color:#2563eb;">Forgot password?</span>
                     </div>
                     <div class="input-control">
-                        <input type="password" id="login-password" placeholder="••••••••" required>
+                        <input type="password" id="login-password" required>
                     </div>
-                </div>
-
-                <div class="field" style="margin-top:4px;display:flex;justify-content:space-between;align-items:center;">
-                    <label class="checkbox">
-                        <input type="checkbox" id="login-remember" checked>
-                        <span>Keep me logged in</span>
-                    </label>
                 </div>
 
                 <button type="submit" class="btn-primary">
@@ -103,17 +91,13 @@
             <div class="auth-footer">
                 <div>
                     <span>Don't have an account?</span>
-                    <a href="register.html" style="color:#2563eb;">Create DairyERP account</a>
-                </div>
-                <div>
-                    <a href="pages/help.html">Need help?</a>
+                    <a href="register.html" style="color:#2563eb;">Create account</a>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-<!-- Firebase compat + App JS -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>

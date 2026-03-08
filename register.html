@@ -19,7 +19,6 @@
 </head>
 <body class="landing-body">
 <div class="auth-wrapper">
-    <!-- Left side hero -->
     <aside class="auth-hero">
         <header class="auth-hero-header">
             <div class="auth-logo">
@@ -32,36 +31,19 @@
         </header>
 
         <main class="auth-hero-body">
-            <div class="auth-hero-highlight">
-                <span><i class="fa-solid fa-star"></i> Free account · No card required</span>
-            </div>
             <h1 class="auth-hero-title">
                 Setup your dairy, farmers & customers in minutes.
             </h1>
             <p class="auth-hero-text">
-                Add milk suppliers (farmers) and milk buyers (customers) with different rate plans,
-                auto statements and payment tracking. All in one simple dashboard.
+                Add milk suppliers and buyers with auto statements and payment tracking.
             </p>
-
-            <div class="auth-hero-metrics">
-                <div class="metric-pill">
-                    <span class="value">Unlimited</span>
-                    <span>farmers & customers</span>
-                </div>
-                <div class="metric-pill">
-                    <span class="value">Daily</span>
-                    <span>milk & payment reports</span>
-                </div>
-            </div>
         </main>
 
         <footer class="auth-hero-footer">
             <span>✔ Works on mobile & desktop</span>
-            <span>✔ Hindi & English labels ready</span>
         </footer>
     </aside>
 
-    <!-- Right side form -->
     <section class="auth-panel">
         <div class="auth-panel-inner">
             <header class="auth-panel-header">
@@ -71,13 +53,6 @@
                 </div>
                 <div class="auth-badge">Email + Google</div>
             </header>
-
-            <div style="margin-bottom:12px;">
-                <div class="auth-tabs">
-                    <a href="login.html" class="auth-tab">Sign in</a>
-                    <a href="register.html" class="auth-tab active">Create account</a>
-                </div>
-            </div>
 
             <div class="auth-oauth">
                 <button class="btn-google" type="button" data-auth="google-register">
@@ -94,7 +69,7 @@
                         <label for="reg-name">Full name</label>
                     </div>
                     <div class="input-control">
-                        <input type="text" id="reg-name" placeholder="Owner / Manager name" required>
+                        <input type="text" id="reg-name" required>
                     </div>
                 </div>
 
@@ -103,7 +78,7 @@
                         <label for="reg-dairy-name">Dairy / Society name</label>
                     </div>
                     <div class="input-control">
-                        <input type="text" id="reg-dairy-name" placeholder="Shree Ram Dairy, etc." required>
+                        <input type="text" id="reg-dairy-name" required>
                     </div>
                 </div>
 
@@ -112,39 +87,18 @@
                         <label for="reg-email">Official email</label>
                     </div>
                     <div class="input-control">
-                        <input type="email" id="reg-email" placeholder="billing@dairyfarm.com" required>
+                        <input type="email" id="reg-email" required>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="field-label">
                         <label for="reg-password">Password</label>
-                        <span>Min 8 characters</span>
+                        <span>Min 8 chars</span>
                     </div>
                     <div class="input-control">
-                        <input type="password" id="reg-password" placeholder="Create a strong password" required minlength="8">
+                        <input type="password" id="reg-password" required minlength="8">
                     </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label">
-                        <label for="reg-type">You mainly</label>
-                    </div>
-                    <div class="input-control">
-                        <select id="reg-type" required>
-                            <option value="">Select type...</option>
-                            <option value="buyer">Buy milk (processing plant / dairy buyer)</option>
-                            <option value="seller">Sell milk (farmer / society / supplier)</option>
-                            <option value="both">Both buy & sell milk</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="checkbox">
-                        <input type="checkbox" id="reg-terms" required>
-                        <span>I accept DairyERP <a href="pages/terms-conditions.html" style="color:#2563eb;">Terms</a> &amp; <a href="pages/privacy-policy.html" style="color:#2563eb;">Privacy Policy</a>.</span>
-                    </label>
                 </div>
 
                 <button type="submit" class="btn-primary">
@@ -156,9 +110,6 @@
                 <div>
                     <span>Already have an account?</span>
                     <a href="login.html" style="color:#2563eb;">Sign in</a>
-                </div>
-                <div>
-                    <a href="pages/help.html">Help center</a>
                 </div>
             </div>
         </div>
