@@ -247,44 +247,48 @@ function initLoginPage() {
   });
 
   document.querySelectorAll('[data-auth="google-login"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(result => {
-          const userFB = result.user;
-          const uidFB  = userFB.uid;
-          state.currentUserId = uidFB;
-          return db.collection('users').doc(uidFB).set({
-            name:      userFB.displayName || 'Google User',
-            dairyName: 'My Dairy',
-            email:     userFB.email,
-            type:      'both',
-            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-          }, { merge: true }).then(() => userFB);
-        })
-        .then(userFB => {
-          const uidFB = userFB.uid;
-          const userLocal = {
-            id:        uidFB,
-            name:      userFB.displayName || 'Google User',
-            dairyName: 'My Dairy',
-            email:     userFB.email,
-            password:  '',
-            type:      'both'
-          };
-          state.users = state.users.filter(u => u.id !== uidFB);
-          state.users.push(userLocal);
-          state.settings.dairyName = 'My Dairy';
-          state.settings.owner     = userLocal.name;
-          saveState();
-          window.location.href = 'pages/dashboard.html';
-        })
-        .catch(err => {
-          console.error(err);
-          showToast(err.message || 'Google sign-in failed.');
-        });
-    });
+  btn.addEventListener('click', () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    console.log('[Google] Starting signInWithPopup...');
+    auth.signInWithPopup(provider)
+      .then(result => {
+        console.log('[Google] Popup result:', result);
+        const userFB = result.user;
+        const uidFB  = userFB.uid;
+        state.currentUserId = uidFB;
+        return db.collection('users').doc(uidFB).set({
+          name:      userFB.displayName || 'Google User',
+          dairyName: 'My Dairy',
+          email:     userFB.email,
+          type:      'both',
+          lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true }).then(() => userFB);
+      })
+      .then(userFB => {
+        console.log('[Google] After Firestore save, redirecting...', userFB);
+        const uidFB = userFB.uid;
+        const userLocal = {
+          id:        uidFB,
+          name:      userFB.displayName || 'Google User',
+          dairyName: 'My Dairy',
+          email:     userFB.email,
+          password:  '',
+          type:      'both'
+        };
+        state.users = state.users.filter(u => u.id !== uidFB);
+        state.users.push(userLocal);
+        state.settings.dairyName = 'My Dairy';
+        state.settings.owner     = userLocal.name;
+        saveState();
+        window.location.href = 'pages/dashboard.html';
+      })
+      .catch(err => {
+        console.error('[Google] Error:', err);
+        showToast(err.message || 'Google sign-in failed.');
+      });
   });
+});
+  
 
   const forgot = document.getElementById('login-forgot-link');
   if (forgot) {
