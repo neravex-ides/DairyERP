@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports & Export – DairyERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="app-sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="DairyERP">
+            </div>
+            <div class="sidebar-title">
+                <div class="sidebar-title-main">DairyERP</div>
+                <div class="sidebar-title-sub">Milk Management Cloud</div>
+            </div>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Main</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="milk-collection.html" class="sidebar-link">
+                    <span class="icon">🥛</span>
+                    <span>Milk collection</span>
+                </a>
+                <a href="sales.html" class="sidebar-link">
+                    <span class="icon">📦</span>
+                    <span>Milk sales</span>
+                </a>
+                <a href="cattle-feed.html" class="sidebar-link">
+                    <span class="icon">🌾</span>
+                    <span>Khal & Churi</span>
+                </a>
+                <a href="payments.html" class="sidebar-link">
+                    <span class="icon">💰</span>
+                    <span>Payments</span>
+                </a>
+                <a href="reports.html" class="sidebar-link active">
+                    <span class="icon">📊</span>
+                    <span>Reports & Export</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Masters</div>
+            <nav class="sidebar-nav">
+                <a href="farmers.html" class="sidebar-link">
+                    <span class="icon">👨‍🌾</span>
+                    <span>Farmers / Suppliers</span>
+                </a>
+                <a href="customers.html" class="sidebar-link">
+                    <span class="icon">🧑‍💼</span>
+                    <span>Customers / Buyers</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="help.html" class="sidebar-link">
+                    <span class="icon">❓</span>
+                    <span>Help & Support</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar" id="sidebar-avatar">DE</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name" id="sidebar-user-name">Dairy User</div>
+                    <div class="sidebar-user-role" id="sidebar-user-role">Reports</div>
+                </div>
+            </div>
+            <button class="sidebar-link" id="btn-logout">
+                <span class="icon">🚪</span>
+                <span>Sign out</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="app-main">
+        <header class="app-header">
+            <div class="app-title-block">
+                <h1>Reports & export</h1>
+                <span>Download statements and summaries.</span>
+            </div>
+        </header>
+
+        <section class="grid grid-2">
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">Milk collection report</div>
+                        <div class="card-subtitle">Filter by date range and farmer.</div>
+                    </div>
+                    <button class="btn-export" id="btn-report-milk-export">⬇ Export CSV</button>
+                </header>
+
+                <form class="form-inline" id="report-milk-form">
+                    <div class="field">
+                        <div class="field-label"><label for="report-milk-from">From</label></div>
+                        <div class="input-control">
+                            <input type="date" id="report-milk-from" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><label for="report-milk-to">To</label></div>
+                        <div class="input-control">
+                            <input type="date" id="report-milk-to" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><label for="report-milk-farmer">Farmer (optional)</label></div>
+                        <div class="input-control">
+                            <select id="report-milk-farmer">
+                                <option value="">All farmers</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </article>
+
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">Payments report</div>
+                        <div class="card-subtitle">All payments between dates.</div>
+                    </div>
+                    <button class="btn-export" id="btn-report-payments-export">⬇ Export CSV</button>
+                </header>
+
+                <form class="form-inline" id="report-payments-form">
+                    <div class="field">
+                        <div class="field-label"><label for="report-pay-from">From</label></div>
+                        <div class="input-control">
+                            <input type="date" id="report-pay-from" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><label for="report-pay-to">To</label></div>
+                        <div class="input-control">
+                            <input type="date" id="report-pay-to" required>
+                        </div>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </main>
+</div>
+
+<div class="toast" id="app-toast"></div>
+<script src="../js/app.js"></script>
+</body>
+</html>

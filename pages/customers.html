@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers / Buyers – DairyERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="app-sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="DairyERP">
+            </div>
+            <div class="sidebar-title">
+                <div class="sidebar-title-main">DairyERP</div>
+                <div class="sidebar-title-sub">Milk Management Cloud</div>
+            </div>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Main</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="milk-collection.html" class="sidebar-link">
+                    <span class="icon">🥛</span>
+                    <span>Milk collection</span>
+                </a>
+                <a href="sales.html" class="sidebar-link">
+                    <span class="icon">📦</span>
+                    <span>Milk sales</span>
+                </a>
+                <a href="cattle-feed.html" class="sidebar-link">
+                    <span class="icon">🌾</span>
+                    <span>Khal & Churi</span>
+                </a>
+                <a href="payments.html" class="sidebar-link">
+                    <span class="icon">💰</span>
+                    <span>Payments</span>
+                </a>
+                <a href="reports.html" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Reports & Export</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Masters</div>
+            <nav class="sidebar-nav">
+                <a href="farmers.html" class="sidebar-link">
+                    <span class="icon">👨‍🌾</span>
+                    <span>Farmers / Suppliers</span>
+                </a>
+                <a href="customers.html" class="sidebar-link active">
+                    <span class="icon">🧑‍💼</span>
+                    <span>Customers / Buyers</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="help.html" class="sidebar-link">
+                    <span class="icon">❓</span>
+                    <span>Help & Support</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar" id="sidebar-avatar">DE</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name" id="sidebar-user-name">Dairy User</div>
+                    <div class="sidebar-user-role" id="sidebar-user-role">Admin</div>
+                </div>
+            </div>
+            <button class="sidebar-link" id="btn-logout">
+                <span class="icon">🚪</span>
+                <span>Sign out</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="app-main">
+        <header class="app-header">
+            <div class="app-title-block">
+                <h1>Customers / Buyers</h1>
+                <span>Add customers who buy milk.</span>
+            </div>
+        </header>
+
+        <section class="card">
+            <header class="card-header">
+                <div>
+                    <div class="card-title">New customer</div>
+                    <div class="card-subtitle">Basic details.</div>
+                </div>
+            </header>
+
+            <form class="form-inline" id="customer-form">
+                <div class="field">
+                    <div class="field-label"><label for="customer-name">Name</label></div>
+                    <div class="input-control">
+                        <input type="text" id="customer-name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field-label"><label for="customer-phone">Phone</label></div>
+                    <div class="input-control">
+                        <input type="text" id="customer-phone">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field-label"><label for="customer-address">Address</label></div>
+                    <div class="input-control">
+                        <input type="text" id="customer-address">
+                    </div>
+                </div>
+                <div class="field" style="align-self:flex-end;min-width:140px;">
+                    <button type="submit" class="btn-primary">Add customer</button>
+                </div>
+            </form>
+        </section>
+
+        <section style="margin-top:16px;" class="card">
+            <header class="card-header">
+                <div>
+                    <div class="card-title">All customers</div>
+                    <div class="card-subtitle">List of buyers.</div>
+                </div>
+            </header>
+
+            <div class="table-wrapper">
+                <table class="table" id="table-customers">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="toast" id="app-toast"></div>
+<script src="../js/app.js"></script>
+</body>
+</html>

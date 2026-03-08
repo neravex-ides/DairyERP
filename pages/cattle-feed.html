@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Khal & Churi – DairyERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="app-sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="DairyERP">
+            </div>
+            <div class="sidebar-title">
+                <div class="sidebar-title-main">DairyERP</div>
+                <div class="sidebar-title-sub">Milk Management Cloud</div>
+            </div>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Main</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="milk-collection.html" class="sidebar-link">
+                    <span class="icon">🥛</span>
+                    <span>Milk collection</span>
+                </a>
+                <a href="sales.html" class="sidebar-link">
+                    <span class="icon">📦</span>
+                    <span>Milk sales</span>
+                </a>
+                <a href="cattle-feed.html" class="sidebar-link active">
+                    <span class="icon">🌾</span>
+                    <span>Khal & Churi</span>
+                </a>
+                <a href="payments.html" class="sidebar-link">
+                    <span class="icon">💰</span>
+                    <span>Payments</span>
+                </a>
+                <a href="reports.html" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Reports & Export</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-nav-group">
+            <div class="sidebar-nav-label">Masters</div>
+            <nav class="sidebar-nav">
+                <a href="farmers.html" class="sidebar-link">
+                    <span class="icon">👨‍🌾</span>
+                    <span>Farmers / Suppliers</span>
+                </a>
+                <a href="customers.html" class="sidebar-link">
+                    <span class="icon">🧑‍💼</span>
+                    <span>Customers / Buyers</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="help.html" class="sidebar-link">
+                    <span class="icon">❓</span>
+                    <span>Help & Support</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar" id="sidebar-avatar">DE</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name" id="sidebar-user-name">Dairy User</div>
+                    <div class="sidebar-user-role" id="sidebar-user-role">Feed</div>
+                </div>
+            </div>
+            <button class="sidebar-link" id="btn-logout">
+                <span class="icon">🚪</span>
+                <span>Sign out</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="app-main">
+        <header class="app-header">
+            <div class="app-title-block">
+                <h1>Khal & Churi</h1>
+                <span>Track cattle feed stock (khal, churi) and issue to farmers.</span>
+            </div>
+            <div class="app-header-actions">
+                <span class="header-badge" id="feed-date"></span>
+            </div>
+        </header>
+
+        <section class="grid grid-2">
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">New stock received</div>
+                        <div class="card-subtitle">Purchase khal / churi into stock.</div>
+                    </div>
+                </header>
+
+                <form class="form-inline" id="feed-stock-form">
+                    <div class="field">
+                        <div class="field-label"><label for="feed-type">Item</label></div>
+                        <div class="input-control">
+                            <select id="feed-type" required>
+                                <option value="Khal">Khal</option>
+                                <option value="Churi">Churi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label"><label for="feed-qty">Qty (kg)</label></div>
+                        <div class="input-control">
+                            <input type="number" step="0.01" min="0" id="feed-qty" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label"><label for="feed-date-input">Date</label></div>
+                        <div class="input-control">
+                            <input type="date" id="feed-date-input" required>
+                        </div>
+                    </div>
+
+                    <div class="field" style="align-self:flex-end;min-width:140px;">
+                        <button type="submit" class="btn-primary">Add to stock</button>
+                    </div>
+                </form>
+            </article>
+
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">Feed issue to farmer</div>
+                        <div class="card-subtitle">Deduct from stock & add to farmer ledger.</div>
+                    </div>
+                </header>
+
+                <form class="form-inline" id="feed-issue-form">
+                    <div class="field">
+                        <div class="field-label"><label for="feed-issue-farmer">Farmer</label></div>
+                        <div class="input-control">
+                            <select id="feed-issue-farmer" required></select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label"><label for="feed-issue-type">Item</label></div>
+                        <div class="input-control">
+                            <select id="feed-issue-type" required>
+                                <option value="Khal">Khal</option>
+                                <option value="Churi">Churi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label"><label for="feed-issue-qty">Qty (kg)</label></div>
+                        <div class="input-control">
+                            <input type="number" step="0.01" min="0" id="feed-issue-qty" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label"><label for="feed-issue-date">Date</label></div>
+                        <div class="input-control">
+                            <input type="date" id="feed-issue-date" required>
+                        </div>
+                    </div>
+
+                    <div class="field" style="align-self:flex-end;min-width:140px;">
+                        <button type="submit" class="btn-primary">Issue feed</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+
+        <section style="margin-top:16px;" class="grid grid-2">
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">Current stock</div>
+                        <div class="card-subtitle">Approximate available quantity.</div>
+                    </div>
+                </header>
+
+                <div style="margin-top:8px;font-size:13px;">
+                    <p>Khal stock: <strong id="stock-khal">0</strong> kg</p>
+                    <p>Churi stock: <strong id="stock-churi">0</strong> kg</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <header class="card-header">
+                    <div>
+                        <div class="card-title">Recent issues</div>
+                        <div class="card-subtitle">Latest feed given to farmers.</div>
+                    </div>
+                </header>
+
+                <div class="table-wrapper">
+                    <table class="table" id="table-feed-issues">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Farmer</th>
+                            <th>Item</th>
+                            <th>Qty (kg)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+
+<div class="toast" id="app-toast"></div>
+<script src="../js/app.js"></script>
+</body>
+</html>
