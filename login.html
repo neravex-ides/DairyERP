@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login – DairyERP</title>
+    <title>DairyERP – Smart Dairy & Milk Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -19,6 +19,7 @@
 </head>
 <body class="landing-body">
 <div class="auth-wrapper">
+    <!-- Left hero -->
     <aside class="auth-hero">
         <header class="auth-hero-header">
             <div class="auth-logo">
@@ -26,74 +27,79 @@
             </div>
             <div>
                 <div class="auth-brand">DairyERP</div>
-                <div style="font-size:11px;color:#6b7280;">Daily dairy ERP</div>
+                <div style="font-size:11px;color:#6b7280;">Milk · Feed · Payments · Farmers</div>
             </div>
         </header>
 
         <main class="auth-hero-body">
             <h1 class="auth-hero-title">
-                Login to manage milk, feed & payments.
+                Cloud based Dairy & Milk Management ERP.
             </h1>
             <p class="auth-hero-text">
-                Secure login with Email or Google. Data synced via Firebase.
+                Track daily milk collection, cattle feed, sales, dues and payments
+                for every farmer and customer – from any device, anywhere.
             </p>
         </main>
 
         <footer class="auth-hero-footer">
-            <span>✔ Farmer milk entries</span>
-            <span>✔ Payments & reports</span>
+            <span>✔ Auto milk calculations</span>
+            <span>✔ Daily feed issue tracking</span>
         </footer>
     </aside>
 
+    <!-- Right side content -->
     <section class="auth-panel">
         <div class="auth-panel-inner">
             <header class="auth-panel-header">
                 <div>
-                    <h2 class="auth-title">Sign in</h2>
-                    <p class="auth-subtitle">Email & password or Google.</p>
+                    <h2 class="auth-title">Welcome to DairyERP</h2>
+                    <p class="auth-subtitle">Sign in or create your dairy account in minutes.</p>
                 </div>
                 <div class="auth-badge">Firebase Auth</div>
             </header>
 
+            <div style="margin-bottom:12px;">
+                <div class="auth-tabs">
+                    <a href="login.html" class="auth-tab active">Sign In</a>
+                    <a href="register.html" class="auth-tab">Create account</a>
+                </div>
+            </div>
+
             <div class="auth-oauth">
-                <button class="btn-google" type="button" data-auth="google-login">
+                <button class="btn-google" type="button" data-auth="google-landing">
                     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                    <span>Sign in with Google</span>
+                    <span>Continue with Google</span>
                 </button>
             </div>
 
-            <div class="auth-divider"><span>or using email</span></div>
+            <div class="auth-divider"><span>or sign in with email</span></div>
 
-            <form class="auth-form" id="login-form">
+            <form class="auth-form" id="landing-login-form">
                 <div class="field">
                     <div class="field-label">
-                        <label for="login-email">Email</label>
+                        <label for="landing-email">Email</label>
                     </div>
                     <div class="input-control">
-                        <input type="email" id="login-email" required>
+                        <input type="email" id="landing-email" placeholder="you@dairyfarm.com" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field-label">
-                        <label for="login-password">Password</label>
-                        <span id="login-forgot-link" style="cursor:pointer;color:#2563eb;">Forgot password?</span>
+                        <label for="landing-password">Password</label>
+                        <span id="landing-forgot">Forgot?</span>
                     </div>
                     <div class="input-control">
-                        <input type="password" id="login-password" required>
+                        <input type="password" id="landing-password" placeholder="••••••••" required>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-primary">
-                    Sign in to DairyERP
+                    Continue to login
+                </button>
+                <button type="button" class="btn-secondary" onclick="window.location.href='register.html'">
+                    New dairy? Create free account
                 </button>
             </form>
-
-            <div class="auth-footer">
-                <div>
-                    <span>Don't have an account?</span>
-                    <a href="register.html" style="color:#2563eb;">Create account</a>
-                </div>
-            </div>
         </div>
     </section>
 </div>

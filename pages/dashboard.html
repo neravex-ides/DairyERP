@@ -5,19 +5,12 @@
   <title>DairyERP Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="app-shell">
-  <aside class="app-sidebar">
+    <aside class="app-sidebar">
+    <!-- Brand / Title -->
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
       <img src="../assets/images/logo.png" alt="Logo" style="width:30px;height:30px;border-radius:8px;">
       <div>
@@ -25,6 +18,22 @@
         <div style="font-size:11px;color:#6b7280;">Dashboard</div>
       </div>
     </div>
+
+    <!-- MAIN NAV: यहाँ सारे pages clearly दिखेंगे -->
+    <nav style="font-size:13px;margin-bottom:12px;display:flex;flex-direction:column;gap:6px;">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="farmers.html">Farmers</a>
+      <a href="customers.html">Customers</a>
+      <a href="milk-collection.html">Milk collection</a>
+      <a href="payments.html">Payments</a>
+      <a href="sales.html">Sales</a>
+      <a href="reports.html">Reports</a>
+      <a href="settings.html">Settings</a>
+      <a href="cattle-feed.html">Cattle feed</a>
+      <a href="help.html">Help</a>
+    </nav>
+
+    <!-- User info + logout -->
     <div style="font-size:12px;margin-top:auto;">
       <div style="margin-bottom:6px;">
         <span id="sidebar-user-name">User</span><br>
@@ -39,6 +48,7 @@
       Today’s milk & payments summary.
     </p>
 
+    <!-- Top stats: Milk + Payments -->
     <div style="display:flex;gap:10px;margin-bottom:14px;">
       <div style="flex:1;background:#fff;border-radius:14px;padding:10px;border:1px solid #e5e7eb;">
         <div style="font-size:12px;color:#6b7280;">Milk collected (today)</div>
@@ -52,6 +62,7 @@
       </div>
     </div>
 
+    <!-- Recent milk -->
     <h2 style="font-size:14px;margin-top:8px;margin-bottom:4px;">Recent milk entries</h2>
     <table class="table" id="table-latest-milk">
       <thead>
@@ -67,6 +78,7 @@
       <tbody></tbody>
     </table>
 
+    <!-- Recent payments -->
     <h2 style="font-size:14px;margin-top:14px;margin-bottom:4px;">Recent payments</h2>
     <table class="table" id="table-latest-payments">
       <thead>

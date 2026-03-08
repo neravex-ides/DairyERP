@@ -327,11 +327,11 @@ function initRegisterPage() {
 }
 
 /********************************************
- * 6. DASHBOARD (milk + payments totals)
+ * 6. DASHBOARD
  ********************************************/
 function initDashboard() {
   const totalMilkEl = document.getElementById('stat-total-milk');
-  if (!totalMilkEl) return; // means we are not on dashboard
+  if (!totalMilkEl) return;
 
   const todayISO = formatDateISO(new Date());
 
@@ -357,17 +357,16 @@ function initDashboard() {
   if (recEl) recEl.textContent = formatCurrency(received);
   if (penEl) penEl.textContent = formatCurrency(pending);
 
-  // latest milk table
   const milkBody = document.querySelector('#table-latest-milk tbody');
   if (milkBody) {
     const latest = [...state.milkEntries]
       .sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id))
       .slice(0, 10);
     milkBody.innerHTML = latest.map(e => {
-      const farmer = state.farmers.find(f => f.id === e.farmerId);
+      const f = state.farmers.find(x => x.id === e.farmerId);
       return `<tr>
         <td>${e.date}</td>
-        <td>${farmer ? farmer.name : 'Farmer'}</td>
+        <td>${f ? f.name : 'Farmer'}</td>
         <td>${e.shift}</td>
         <td>${Number(e.qty).toFixed(2)}</td>
         <td>${Number(e.rate).toFixed(2)}</td>
@@ -384,10 +383,10 @@ function initDashboard() {
     payBody.innerHTML = latest.map(p => {
       let name = '';
       if (p.partyType === 'farmer') {
-        const f = state.farmers.find(f => f.id === p.partyId);
+        const f = state.farmers.find(x => x.id === p.partyId);
         name = f ? f.name : 'Farmer';
       } else {
-        const c = state.customers.find(c => c.id === p.partyId);
+        const c = state.customers.find(x => x.id === p.partyId);
         name = c ? c.name : 'Customer';
       }
       const label = p.partyType === 'customer' ? 'Received' : 'Paid';
@@ -410,10 +409,14 @@ function initMilkCollection() {
   const form = document.getElementById('milk-entry-form');
   if (!form) return;
 
-  const dateInput = document.getElementById('milk-date-input');
+  const dateInput   = document.getElementById('milk-date-input');
+  const farmerSelect = document.getElementById('milk-farmer');
+  const qtyInput    = document.getElementById('milk-qty');
+  const rateInput   = document.getElementById('milk-rate');
+  const amountInput = document.getElementById('milk-amount');
+
   if (dateInput) dateInput.value = formatDateISO(new Date());
 
-  const farmerSelect = document.getElementById('milk-farmer');
   if (farmerSelect) {
     if (state.farmers.length === 0) {
       farmerSelect.innerHTML = '<option value="">No farmers yet (add in Farmers)</option>';
@@ -422,10 +425,6 @@ function initMilkCollection() {
         .map(f => `<option value="${f.id}">${f.code || ''} ${f.name}</option>`).join('');
     }
   }
-
-  const qtyInput    = document.getElementById('milk-qty');
-  const rateInput   = document.getElementById('milk-rate');
-  const amountInput = document.getElementById('milk-amount');
 
   function calcAmount() {
     const q = Number(qtyInput.value || 0);
@@ -543,10 +542,10 @@ function initPaymentsPage() {
       .map(p => {
         let name = '';
         if (p.partyType === 'farmer') {
-          const f = state.farmers.find(f => f.id === p.partyId);
+          const f = state.farmers.find(x => x.id === p.partyId);
           name = f ? f.name : 'Farmer';
         } else {
-          const c = state.customers.find(c => c.id === p.partyId);
+          const c = state.customers.find(x => x.id === p.partyId);
           name = c ? c.name : 'Customer';
         }
         const label = p.partyType === 'customer' ? 'Received' : 'Paid';
@@ -642,7 +641,7 @@ function initCustomersPage() {
 }
 
 /********************************************
- * 11. EXPORT CSV (optional, dashboard buttons)
+ * 11. EXPORT CSV (optional)
  ********************************************/
 function exportCSV(rows, filename) {
   if (!rows || rows.length === 0) {

@@ -9,84 +9,39 @@
 </head>
 <body>
 <div class="app-shell">
-    <aside class="app-sidebar">
-        <div class="sidebar-brand">
-            <div class="sidebar-logo">
-                <img src="../assets/images/logo.png" alt="DairyERP">
-            </div>
-            <div class="sidebar-title">
-                <div class="sidebar-title-main">DairyERP</div>
-                <div class="sidebar-title-sub">Milk Management Cloud</div>
-            </div>
-        </div>
+      <aside class="app-sidebar">
+    <!-- Brand / Title -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <img src="../assets/images/logo.png" alt="Logo" style="width:30px;height:30px;border-radius:8px;">
+      <div>
+        <div style="font-weight:600;font-size:14px;">DairyERP</div>
+        <div style="font-size:11px;color:#6b7280;">Dashboard</div>
+      </div>
+    </div>
 
-        <div class="sidebar-nav-group">
-            <div class="sidebar-nav-label">Main</div>
-            <nav class="sidebar-nav">
-                <a href="dashboard.html" class="sidebar-link">
-                    <span class="icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="milk-collection.html" class="sidebar-link">
-                    <span class="icon">🥛</span>
-                    <span>Milk collection</span>
-                </a>
-                <a href="sales.html" class="sidebar-link">
-                    <span class="icon">📦</span>
-                    <span>Milk sales</span>
-                </a>
-                <a href="cattle-feed.html" class="sidebar-link active">
-                    <span class="icon">🌾</span>
-                    <span>Khal & Churi</span>
-                </a>
-                <a href="payments.html" class="sidebar-link">
-                    <span class="icon">💰</span>
-                    <span>Payments</span>
-                </a>
-                <a href="reports.html" class="sidebar-link">
-                    <span class="icon">📊</span>
-                    <span>Reports & Export</span>
-                </a>
-            </nav>
-        </div>
+    <!-- MAIN NAV: यहाँ सारे pages clearly दिखेंगे -->
+    <nav style="font-size:13px;margin-bottom:12px;display:flex;flex-direction:column;gap:6px;">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="farmers.html">Farmers</a>
+      <a href="customers.html">Customers</a>
+      <a href="milk-collection.html">Milk collection</a>
+      <a href="payments.html">Payments</a>
+      <a href="sales.html">Sales</a>
+      <a href="reports.html">Reports</a>
+      <a href="settings.html">Settings</a>
+      <a href="cattle-feed.html">Cattle feed</a>
+      <a href="help.html">Help</a>
+    </nav>
 
-        <div class="sidebar-nav-group">
-            <div class="sidebar-nav-label">Masters</div>
-            <nav class="sidebar-nav">
-                <a href="farmers.html" class="sidebar-link">
-                    <span class="icon">👨‍🌾</span>
-                    <span>Farmers / Suppliers</span>
-                </a>
-                <a href="customers.html" class="sidebar-link">
-                    <span class="icon">🧑‍💼</span>
-                    <span>Customers / Buyers</span>
-                </a>
-                <a href="settings.html" class="sidebar-link">
-                    <span class="icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-                <a href="help.html" class="sidebar-link">
-                    <span class="icon">❓</span>
-                    <span>Help & Support</span>
-                </a>
-            </nav>
-        </div>
-
-        <div class="sidebar-footer">
-            <div class="sidebar-user">
-                <div class="sidebar-avatar" id="sidebar-avatar">DE</div>
-                <div class="sidebar-user-info">
-                    <div class="sidebar-user-name" id="sidebar-user-name">Dairy User</div>
-                    <div class="sidebar-user-role" id="sidebar-user-role">Feed</div>
-                </div>
-            </div>
-            <button class="sidebar-link" id="btn-logout">
-                <span class="icon">🚪</span>
-                <span>Sign out</span>
-            </button>
-        </div>
-    </aside>
-
+    <!-- User info + logout -->
+    <div style="font-size:12px;margin-top:auto;">
+      <div style="margin-bottom:6px;">
+        <span id="sidebar-user-name">User</span><br>
+        <span id="sidebar-user-role" style="color:#6b7280;">Admin</span>
+      </div>
+      <button id="btn-logout" style="font-size:12px;">Sign out</button>
+    </div>
+  </aside>
     <main class="app-main">
         <header class="app-header">
             <div class="app-title-block">
