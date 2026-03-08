@@ -1,204 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Milk Collection – DairyERP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>Milk Collection – DairyERP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="app-shell">
-    <aside class="app-sidebar">
-        <!-- same sidebar as dashboard -->
-        <div class="sidebar-brand">
-            <div class="sidebar-logo">
-                <img src="../assets/images/logo.png" alt="DairyERP">
-            </div>
-            <div class="sidebar-title">
-                <div class="sidebar-title-main">DairyERP</div>
-                <div class="sidebar-title-sub">Milk Management Cloud</div>
-            </div>
-        </div>
+  <aside class="app-sidebar">
+    <div style="font-weight:600;margin-bottom:10px;">Milk collection</div>
+    <div style="margin-top:auto;font-size:12px;">
+      <span id="sidebar-user-name">User</span><br>
+      <span id="sidebar-user-role" style="color:#6b7280;">Admin</span><br>
+      <button id="btn-logout" style="font-size:12px;margin-top:6px;">Sign out</button>
+    </div>
+  </aside>
+  <main class="app-main">
+    <h1 style="font-size:18px;margin-bottom:8px;">Milk collection</h1>
 
-        <div class="sidebar-nav-group">
-            <div class="sidebar-nav-label">Main</div>
-            <nav class="sidebar-nav">
-                <a href="dashboard.html" class="sidebar-link">
-                    <span class="icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="milk-collection.html" class="sidebar-link active">
-                    <span class="icon">🥛</span>
-                    <span>Milk collection</span>
-                    <span class="badge">Live</span>
-                </a>
-                <a href="sales.html" class="sidebar-link">
-                    <span class="icon">📦</span>
-                    <span>Milk sales</span>
-                </a>
-                <a href="cattle-feed.html" class="sidebar-link">
-                    <span class="icon">🌾</span>
-                    <span>Khal & Churi</span>
-                </a>
-                <a href="payments.html" class="sidebar-link">
-                    <span class="icon">💰</span>
-                    <span>Payments</span>
-                </a>
-                <a href="reports.html" class="sidebar-link">
-                    <span class="icon">📊</span>
-                    <span>Reports & Export</span>
-                </a>
-            </nav>
-        </div>
+    <form id="milk-entry-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+      <select id="milk-farmer" required style="flex:2;min-width:120px;"></select>
+      <input id="milk-date-input" type="date" required style="flex:1;min-width:120px;">
+      <select id="milk-shift" required style="flex:1;min-width:80px;">
+        <option value="Morning">Morning</option>
+        <option value="Evening">Evening</option>
+      </select>
+      <input id="milk-qty" type="number" step="0.01" min="0" placeholder="Qty L" required style="flex:1;min-width:80px;">
+      <input id="milk-rate" type="number" step="0.01" min="0" placeholder="Rate" required style="flex:1;min-width:80px;">
+      <input id="milk-amount" type="number" step="0.01" min="0" placeholder="Amount" readonly style="flex:1;min-width:80px;">
+      <button type="submit" class="btn-primary" style="flex:0 0 auto;">Save</button>
+    </form>
 
-        <div class="sidebar-nav-group">
-            <div class="sidebar-nav-label">Masters</div>
-            <nav class="sidebar-nav">
-                <a href="farmers.html" class="sidebar-link">
-                    <span class="icon">👨‍🌾</span>
-                    <span>Farmers / Suppliers</span>
-                </a>
-                <a href="customers.html" class="sidebar-link">
-                    <span class="icon">🧑‍💼</span>
-                    <span>Customers / Buyers</span>
-                </a>
-                <a href="settings.html" class="sidebar-link">
-                    <span class="icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-                <a href="help.html" class="sidebar-link">
-                    <span class="icon">❓</span>
-                    <span>Help & Support</span>
-                </a>
-            </nav>
-        </div>
-
-        <div class="sidebar-footer">
-            <div class="sidebar-user">
-                <div class="sidebar-avatar" id="sidebar-avatar">DE</div>
-                <div class="sidebar-user-info">
-                    <div class="sidebar-user-name" id="sidebar-user-name">Dairy User</div>
-                    <div class="sidebar-user-role" id="sidebar-user-role">Collector</div>
-                </div>
-            </div>
-            <button class="sidebar-link" id="btn-logout">
-                <span class="icon">🚪</span>
-                <span>Sign out</span>
-            </button>
-        </div>
-    </aside>
-
-    <main class="app-main">
-        <header class="app-header">
-            <div class="app-title-block">
-                <h1>Milk collection</h1>
-                <span>Enter daily milk for farmers. Milk auto adds to dashboard & reports.</span>
-            </div>
-            <div class="app-header-actions">
-                <span class="header-badge" id="milk-date"></span>
-            </div>
-        </header>
-
-        <section class="card">
-            <header class="card-header">
-                <div>
-                    <div class="card-title">New milk entry</div>
-                    <div class="card-subtitle">Fill farmer, shift, quantity & rate.</div>
-                </div>
-                <button class="btn-export" id="btn-export-milk-all">⬇ Export all entries</button>
-            </header>
-
-            <form class="form-inline" id="milk-entry-form">
-                <div class="field">
-                    <div class="field-label"><label for="milk-farmer">Farmer</label></div>
-                    <div class="input-control">
-                        <select id="milk-farmer" required>
-                            <!-- JS will fill from local farmers list -->
-                        </select>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label"><label for="milk-date-input">Date</label></div>
-                    <div class="input-control">
-                        <input type="date" id="milk-date-input" required>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label"><label for="milk-shift">Shift</label></div>
-                    <div class="input-control">
-                        <select id="milk-shift" required>
-                            <option value="Morning">Morning</option>
-                            <option value="Evening">Evening</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label"><label for="milk-qty">Quantity (L)</label></div>
-                    <div class="input-control">
-                        <input type="number" step="0.01" min="0" id="milk-qty" placeholder="e.g. 18.5" required>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label"><label for="milk-rate">Rate (₹/L)</label></div>
-                    <div class="input-control">
-                        <input type="number" step="0.01" min="0" id="milk-rate" placeholder="e.g. 34.50" required>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="field-label"><label for="milk-amount">Amount (₹)</label></div>
-                    <div class="input-control">
-                        <input type="number" step="0.01" min="0" id="milk-amount" placeholder="Auto" readonly>
-                        <span class="suffix-action" id="milk-auto-amount">Auto</span>
-                    </div>
-                </div>
-
-                <div class="field" style="align-self:flex-end;min-width:140px;">
-                    <button type="submit" class="btn-primary">Save entry</button>
-                </div>
-            </form>
-        </section>
-
-        <section style="margin-top:16px;" class="card">
-            <header class="card-header">
-                <div>
-                    <div class="card-title">Today’s entries</div>
-                    <div class="card-subtitle">All milk entries for selected date.</div>
-                </div>
-                <div>
-                    <button class="btn-outline" id="btn-filter-today">Today</button>
-                </div>
-            </header>
-
-            <div class="table-wrapper">
-                <table class="table" id="table-milk-entries">
-                    <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Farmer</th>
-                        <th>Shift</th>
-                        <th>Qty (L)</th>
-                        <th>Rate (₹/L)</th>
-                        <th>Amount (₹)</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Filled by JS -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+    <table class="table" id="table-milk-entries">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Farmer</th>
+          <th>Shift</th>
+          <th>Qty</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
 </div>
 
 <div class="toast" id="app-toast"></div>
 
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="../js/app.js"></script>
 </body>
 </html>

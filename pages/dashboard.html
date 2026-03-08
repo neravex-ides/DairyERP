@@ -25,19 +25,62 @@
         <div style="font-size:11px;color:#6b7280;">Dashboard</div>
       </div>
     </div>
-    <div style="margin-top:auto;">
-      <div style="font-size:12px;margin-bottom:6px;">
+    <div style="font-size:12px;margin-top:auto;">
+      <div style="margin-bottom:6px;">
         <span id="sidebar-user-name">User</span><br>
-        <span id="sidebar-user-role" style="color:#6b7280;">Role</span>
+        <span id="sidebar-user-role" style="color:#6b7280;">Admin</span>
       </div>
       <button id="btn-logout" style="font-size:12px;">Sign out</button>
     </div>
   </aside>
   <main class="app-main">
-    <h1>Welcome to DairyERP</h1>
-    <p style="margin-top:4px;font-size:13px;color:#6b7280;">
-      You are logged in via Firebase authentication (Email or Google).
+    <h1 style="font-size:20px;">Dashboard</h1>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:12px;">
+      Today’s milk & payments summary.
     </p>
+
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:10px;border:1px solid #e5e7eb;">
+        <div style="font-size:12px;color:#6b7280;">Milk collected (today)</div>
+        <div id="stat-total-milk" style="font-size:18px;font-weight:600;">0.00 L</div>
+        <div style="font-size:11px;color:#6b7280;">Farmers: <span id="stat-total-farmers">0</span></div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:10px;border:1px solid #e5e7eb;">
+        <div style="font-size:12px;color:#6b7280;">Payments (today)</div>
+        <div id="stat-payments-received" style="font-size:18px;font-weight:600;">₹0.00</div>
+        <div style="font-size:11px;color:#6b7280;">Pending: <span id="stat-payments-pending">₹0.00</span></div>
+      </div>
+    </div>
+
+    <h2 style="font-size:14px;margin-top:8px;margin-bottom:4px;">Recent milk entries</h2>
+    <table class="table" id="table-latest-milk">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Farmer</th>
+          <th>Shift</th>
+          <th>Qty (L)</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2 style="font-size:14px;margin-top:14px;margin-bottom:4px;">Recent payments</h2>
+    <table class="table" id="table-latest-payments">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Party</th>
+          <th>Type</th>
+          <th>Mode</th>
+          <th>Amount</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </main>
 </div>
 
