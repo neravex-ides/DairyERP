@@ -1,7 +1,7 @@
 <!-- HERO HEADER -->
 <div align="center">
 
-<img src="assets/images/logo.png" alt="DairyERP Logo" width="72" height="72" style="border-radius:16px;">
+<img src="assets/images/logo.png" alt="DairyERP Logo" width="90" height="90" style="border-radius:24px;box-shadow:0 16px 40px rgba(0,0,0,0.45);margin-bottom:8px;">
 
 # DairyERP  
 ### Cloud‑Ready Dairy & Milk Management ERP
@@ -17,7 +17,9 @@
 </p>
 
 <p align="center">
-  <a href="https://neravex-ides.github.io/DairyERP/"><img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages-2563EB?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Demo"></a>
+  <a href="https://neravex-ides.github.io/DairyERP/">
+    <img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages-2563EB?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Demo">
+  </a>
   <img src="https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JS-0ea5e9?style=for-the-badge&logo=html5&logoColor=white" alt="Frontend">
   <img src="https://img.shields.io/badge/Auth-Firebase_Auth-ffca28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase Auth">
 </p>
@@ -26,159 +28,238 @@
 
 ## 🔭 Overview
 
-**DairyERP** is a lightweight yet powerful web‑based ERP designed for dairy farms, milk collection centers and co‑operative societies.
+**DairyERP** is a modern, cloud‑ready ERP UI for:
 
-It focuses on:
+- Dairy farms  
+- Milk collection centers  
+- Co‑operative societies  
 
-- Daily **milk collection** – farmer‑wise, morning & evening
-- Master data for **farmers** and **customers**
-- **Payments** in and out – farmer payout vs customer receipts
-- (Template ready) **cattle feed (khal & churi)** stock and issue register
-- A clean **dashboard** showing today’s milk, payments and recent activity
+The focus is on **daily operations**:
 
-The entire app runs on:
+- Morning / evening **milk collection**
+- **Farmer & customer** master records
+- **Payments in / out** with simple ledgers
+- (Template ready) **cattle feed – khal & churi** stock and issue
+- A clean **dashboard** with milk + payments summary
 
-- Pure **HTML / CSS / JavaScript**
-- **Firebase Authentication** (Email/Password + Google)
-- Deployed as a static site on **GitHub Pages**
+The whole app is:
 
----
-
-## ✨ Features at a Glance
-
-### 🔐 Authentication
-
-- Secure login with **Firebase Authentication**
-- **Email / Password** sign‑in & register
-- **Sign in with Google** (popup auth)
-- **Forgot password** via Firebase reset email
-- All `/pages/*` routes are protected – unauthenticated access redirects to `login.html`.
+- Frontend: **HTML + CSS + Vanilla JS**  
+- Auth: **Firebase Authentication** (Email/Password + Google)  
+- Hosting: **GitHub Pages** (static, no backend server required)  
 
 ---
 
-### 📊 Dashboard
+## ✨ UI Highlights
 
-- **Milk collected (today)** – total quantity in liters  
-- **Farmer count (today)** – unique farmers who supplied milk
-- **Payments (today)**:
-  - Total amount received from customers
-  - Approx. pending (farmer payout – customer receipts)
-- **Recent milk entries** (last 10 records)
-- **Recent payments** (last 10 records)
+### 🎨 Design System
+
+- **Color palette:** sky blue, white, dark grey  
+- **Fonts:**  
+  - `Poppins` – main UI  
+  - `Amaranth` – brand / logo text  
+- **Layout:**  
+  - Left sidebar navigation (desktop)  
+  - Top app header with actions  
+  - Card‑based dashboard  
 
 ---
 
-### 👨‍🌾 Farmers / Suppliers
+### 🔐 Premium Auth Experience
 
-- Farmer master data:
-  - Code (F001, F002, …)
+Landing / login page is fully custom‑designed:
+
+- **Left side:** iOS‑style black mobile screen
+  - DairyERP logo
+  - “Smart Dairy In Every Operation” tagline
+  - Glassy **Get Access** button
+- **Right side:** peach‑colored luxury login card
+  - Tabs: **Sign In / Create Account**
+  - **Continue with Google** (Firebase popup)
+  - Email + password form
+  - Primary sky gradient **“Continue to login”** button
+  - Secondary black **“Create free account”** button
+
+All auth routes (`login.html`, `register.html`, `index.html`) use Firebase Auth,  
+so you can plug your own Firebase config in `js/app.js`.
+
+---
+
+## 📊 Core ERP Modules
+
+### 🏠 Dashboard (`pages/dashboard.html`)
+
+A quick overview for the day:
+
+- **Total milk collected today** (liters)
+- **Number of active farmers today**
+- **Payments today:**
+  - Money received from customers
+  - Approx. pending amount (farmer payout – customer receipts)
+- **Recent milk entries** – last 10 milk collection rows
+- **Recent payments** – last 10 payment rows
+
+All numbers are calculated from stored records (localStorage or Firestore).
+
+---
+
+### 👨‍🌾 Farmers / Suppliers (`pages/farmers.html`)
+
+Manage your milk suppliers:
+
+- Farmer master fields:
+  - Code (e.g. F001, F002…)
   - Name
-  - Phone
-  - Address
-- Simple add form with live table
-- Used by milk collection and farmer payments dropdowns
+  - Mobile
+  - Address / Village
+- Simple add & edit UI with live table
+- Farmers appear in:
+  - Milk collection farmer dropdown
+  - Farmer‑side payments (we pay them)
 
 ---
 
-### 🧑‍💼 Customers / Buyers
+### 🧑‍💼 Customers / Buyers (`pages/customers.html`)
 
-- Customer master data:
+Track who is buying milk:
+
+- Customer master fields:
   - Name
-  - Phone
-  - Address
-- Customers appear in payments module when recording receipts
-- Useful for tracking B2B buyers, distributors, shops, etc.
+  - Mobile
+  - Address / Shop
+- Customers appear in:
+  - Payments (customer receipts)
+  - Sales module (template)
+
+Ideal for B2B buyers, bulk customers, collection points, etc.
 
 ---
 
-### 🥛 Milk Collection
+### 🥛 Milk Collection (`pages/milk-collection.html`)
 
-- Select farmer from master list
-- Date and shift (Morning / Evening)
-- Quantity (L) and rate with **auto amount calculation**
-- Entries stored in browser localStorage (or easily extendable to Firestore)
-- Dashboard is automatically refreshed:
-  - Today’s total milk
-  - Recent entries table
+Daily collection register:
+
+- Pick:
+  - Farmer
+  - Date
+  - Shift (Morning / Evening)
+- Enter:
+  - Quantity (Liters)
+  - Rate (₹/Litre)
+- System auto‑calculates **Amount**
+
+Collected entries feed the **Dashboard** and can be extended to Firestore.
 
 ---
 
-### 💰 Payments
+### 💰 Payments (`pages/payments.html`)
+
+Single screen for both in‑coming and out‑going payments:
 
 - Party type:
-  - **Farmer (we pay)** – outgoing payments
-  - **Customer (they pay)** – incoming payments
-- Party dropdown bound to farmers/customers accordingly
-- Date, payment mode (Cash / Bank / UPI), amount & notes
-- Dashboard reflects:
+  - **Farmer (debit)** – payment you give to farmer
+  - **Customer (credit)** – payment you receive from buyer
+- Fields:
+  - Party (farmer / customer)
+  - Date
+  - Mode: Cash / Bank / UPI
+  - Amount
+  - Notes
+- Dashboard shows:
   - Total received today
-  - Approximate pending
+  - Approx. pending
 
 ---
 
-### 🌾 Cattle Feed – Khal & Churi (Template Ready)
+### 🌾 Cattle Feed (Khal & Churi) – Template (`pages/cattle-feed.html`)
 
-The **cattle‑feed module** is fully templated with UI and IDs:
+UI & JS hooks are ready for full cattle‑feed tracking:
 
-- **New stock**:
-  - Item: Khal / Churi
+- **New Stock:**
+  - Item type: Khal / Churi
   - Quantity (kg)
   - Date
-- **Issue to farmer**:
-  - Farmer select
+- **Issue to farmer:**
+  - Farmer
   - Item
-  - Quantity
+  - Quantity (kg)
   - Date
-- **Current stock** summary for Khal & Churi
+- Simple **Current Stock** card (Khal & Churi)
 - **Recent issues** table
 
-The HTML structure is complete and already wired in JS (`initFeedPage`) – ready for further business logic (e.g. linking to farmer ledger, costing, etc.).
+You can easily extend it to update farmer ledger / costing inside `js/app.js`.
 
 ---
 
-## 🧠 Tech Stack
+### 📈 Sales & Reports – Template Pages
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript (no framework)
-- **Auth & Backend:** Firebase Auth (+ optional Firestore integration)
-- **Hosting:** GitHub Pages
-- **Icons & Visuals:**
-  - Emoji icons in sidebar (🥛, 🌾, 💰, 📊, …)
-  - Optional Font Awesome support
-- **Storage (demo mode):** Browser `localStorage` for ERP data
+To keep the project lightweight but future‑proof, these pages are:
+
+- `pages/sales.html` – Milk sales & invoicing (design ready, logic optional)
+- `pages/reports.html` – Summary reports & export
+- `pages/settings.html` – Branding, rate configuration etc.
+- `pages/help.html` – Help, FAQ, contact
+
+They follow the same dashboard shell so you can plug your own business logic later.
 
 ---
 
-## 🗂 File & Folder Structure
+## 🧠 Tech Stack Details
+
+### Frontend
+
+- **HTML5** – semantic layout  
+- **CSS3** – custom properties, Grid, Flexbox, glassmorphism  
+- **JavaScript (Vanilla)** – no heavy framework
+
+### Auth / Data
+
+- **Firebase Authentication**
+  - Email & Password
+  - Google OAuth (popup)
+  - Password reset via email
+- **Firestore / localStorage** (you can choose)
+  - The code is written so basic ERP data can be stored in browser or migrated to Firestore collections.
+
+### Hosting
+
+- **GitHub Pages**
+  - Static deployment: no server, just HTML+CSS+JS
+  - Perfect for demos, small dairies, personal projects
+
+---
+
+## 🗂 Project Structure
 
 ```text
 DairyERP/
-  index.html               # Landing + quick sign-in (Email / Google)
-  login.html               # Login (Email / Google / Forgot password)
-  register.html            # Register new dairy account
+  index.html               # Landing / quick sign-in
+  login.html               # Auth: login form
+  register.html            # Auth: create dairy account
 
   css/
-    style.css              # Global theme: auth + dashboard + pages
+    style.css              # Complete UI theme (auth + dashboard)
 
   js/
-    app.js                 # Firebase init + auth + ERP logic
+    app.js                 # Firebase init, auth flows, ERP logic
 
   assets/
     images/
-      logo.png             # App logo
-      favicon.png          # Favicon
+      logo.png             # App logo used across UI & README
+      favicon.png          # Browser favicon
 
   pages/
-    dashboard.html         # Dashboard (milk & payment summary + recent tables)
-    milk-collection.html   # Daily milk collection (farmer-wise)
-    payments.html          # Payments (farmers/customers)
-    farmers.html           # Farmers master
-    customers.html         # Customers master
-    cattle-feed.html       # Khal & Churi stock / issue module
-    sales.html             # Milk sales (template/placeholder)
-    reports.html           # Reports & export (template/placeholder)
-    settings.html          # Settings (template/placeholder)
-    help.html              # Help & support text
+    dashboard.html         # Main dashboard
+    milk-collection.html   # Daily milk collection
+    payments.html          # Payments in/out
+    farmers.html           # Farmer master
+    customers.html         # Customer master
+    cattle-feed.html       # Khal & Churi module (template logic)
+    sales.html             # Sales (template)
+    reports.html           # Reports & exports (template)
+    settings.html          # Global settings (template)
+    help.html              # Help & support
 
-    privacy-policy.html    # Static policy pages
+    privacy-policy.html    # Static info pages
     terms-conditions.html
     refund-policy.html
